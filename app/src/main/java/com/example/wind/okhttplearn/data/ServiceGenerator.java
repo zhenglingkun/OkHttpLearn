@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ServiceGenerator {
 
-//    public static final String API_BASE_URL = "http://android.kuaichengwuliu.com/";
-    public static final String API_BASE_URL = "https://api.github.com/";
+    public static final String API_BASE_URL = "http://android.kuaichengwuliu.com/";
+//    public static final String API_BASE_URL = "https://api.github.com/";
 
     private static OkHttpClient.Builder mHttpClient = new OkHttpClient.Builder();
 
