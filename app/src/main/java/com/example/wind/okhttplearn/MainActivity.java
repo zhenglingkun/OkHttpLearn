@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.wind.okhttplearn.data.GitHubClient;
 import com.example.wind.okhttplearn.data.ServiceGenerator;
 import com.example.wind.okhttplearn.data.model.DecryptKey;
+import com.example.wind.okhttplearn.rxjava.RxJavaLearn;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -19,28 +20,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-        GitHubClient client = ServiceGenerator.createService(GitHubClient.class);
-        client.decryptKey()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<DecryptKey>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.i(TAG, "onCompleted: ");
-                    }
+        RxJavaLearn rxJavaLearn = new RxJavaLearn();
+        rxJavaLearn.allOperator();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.wtf(TAG, "onError: ", e);
-                    }
-
-                    @Override
-                    public void onNext(DecryptKey decryptKey) {
-                        Log.i(TAG, "onNext: decryptKey.obj = " + decryptKey.getObj());
-                    }
-                });
+//        GitHubClient client = ServiceGenerator.createService(GitHubClient.class);
+//        client.decryptKey()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<DecryptKey>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.i(TAG, "onCompleted: ");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.wtf(TAG, "onError: ", e);
+//                    }
+//
+//                    @Override
+//                    public void onNext(DecryptKey decryptKey) {
+//                        Log.i(TAG, "onNext: decryptKey.obj = " + decryptKey.getObj());
+//                    }
+//                });
 
 //        Observable.create(new Observable.OnSubscribe<List<Contributor>>() {
 //            @Override
